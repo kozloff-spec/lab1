@@ -1,6 +1,7 @@
 #include <iostream>
 using namespace std;
 
+
 int main()
 {
     int a = sizeof(int);
@@ -9,4 +10,5 @@ int main()
     int d = sizeof(char);
     int e = sizeof(float);
     int f = sizeof(double);
+
 }
