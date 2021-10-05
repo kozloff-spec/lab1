@@ -1,6 +1,5 @@
 #include <iostream>
 
-
 int main()
 {
     int a = 2, b, c, d;
@@ -8,4 +7,5 @@ int main()
     c = b * b;
     d = c * c;
     a = d;
+
 }

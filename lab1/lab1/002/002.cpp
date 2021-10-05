@@ -1,4 +1,5 @@
 #include <iostream>
+//#include <math.h>
 
 int main()
 {
@@ -8,5 +9,4 @@ int main()
     c = 20;
     p = (a + b + c) / 2;
     s = sqrt((p) * (p - c) * (p - b) * (p - c));
-
 }
