@@ -1,4 +1,4 @@
-#include <iostream>
+ï»¿#include <iostream>
 #include "windows.h"
 using namespace std;
 
@@ -13,13 +13,13 @@ int main() {
 	char n;
 	unsigned short int UnitStateWord; 
 								
-	printf("Ââåäèòå êîä ñîñòîÿíèÿ (0 - 4) >");
+	printf("Ð’Ð²ÐµÐ´Ð¸Ñ‚Ðµ ÐºÐ¾Ð´ ÑÐ¾ÑÑ‚Ð¾ÑÐ½Ð¸Ñ (0 - 4) >");
 	scanf_s("%hu", &c);
-	printf("Ââåäèòå ïðèçíàê îøèáêè (0 / 31) >");
+	printf("Ð’Ð²ÐµÐ´Ð¸Ñ‚Ðµ Ð¿Ñ€Ð¸Ð·Ð½Ð°Ðº Ð¾ÑˆÐ¸Ð±ÐºÐ¸ (0 / 31) >");
 	scanf_s("%hu", &f);
-	printf("Ââåäèòå ïðèçíàê çàíÿòîñòè (0 / 127) >");
+	printf("Ð’Ð²ÐµÐ´Ð¸Ñ‚Ðµ Ð¿Ñ€Ð¸Ð·Ð½Ð°Ðº Ð·Ð°Ð½ÑÑ‚Ð¾ÑÑ‚Ð¸ (0 / 127) >");
 	scanf_s("%hu", &b);
-	printf("Ââåäèòå êîëè÷åñòâî ïåðåäàííûõ áàéò (0 - 1) >");
+	printf("Ð’Ð²ÐµÐ´Ð¸Ñ‚Ðµ ÐºÐ¾Ð»Ð¸Ñ‡ÐµÑÑ‚Ð²Ð¾ Ð¿ÐµÑ€ÐµÐ´Ð°Ð½Ð½Ñ‹Ñ… Ð±Ð°Ð¹Ñ‚ (0 - 1) >");
 	scanf_s("%hu", &n);
 
 	UnitStateWord = (c & 0xf) << 13;
@@ -28,6 +28,6 @@ int main() {
 	UnitStateWord |= n & 1;
 
 
-	printf("\nÑ1ëîâî ñîñòîÿíèÿ óñòðîéñòâà = %04x\n",		UnitStateWord);
+	printf("\nÐ¡1Ð»Ð¾Ð²Ð¾ ÑÐ¾ÑÑ‚Ð¾ÑÐ½Ð¸Ñ ÑƒÑÑ‚Ñ€Ð¾Ð¹ÑÑ‚Ð²Ð° = %04x\n",		UnitStateWord);
 	return 0;
 }

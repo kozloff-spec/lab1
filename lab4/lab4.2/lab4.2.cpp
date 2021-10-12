@@ -1,4 +1,4 @@
-#define  _CRT_SECURE_NO_WARNINGS
+п»ї#define  _CRT_SECURE_NO_WARNINGS
 #include <iostream>
 #include "windows.h";
 using namespace std;
@@ -13,8 +13,8 @@ int main(void) {
 	unsigned short n; 
 	unsigned  int UnitStateWord; 
 								
-	printf("Введите кодировку \n");
-	printf("(16-ричное число от 0 до 0xFFFF) >");
+	printf("Р’РІРµРґРёС‚Рµ РєРѕРґРёСЂРѕРІРєСѓ \n");
+	printf("(16-СЂРёС‡РЅРѕРµ С‡РёСЃР»Рѕ РѕС‚ 0 РґРѕ 0xFFFF) >");
 	scanf_s("%hx", &UnitStateWord);
 
 
@@ -25,9 +25,9 @@ int main(void) {
 
 
 
-	printf("\n номер канала = %hu\n", c);
-	printf("номер устройства в канале = %hu\n", f);
-	printf("код состояния = %hu\n", b);
-	printf("признак занятости устройства = %hu\n", n);
+	printf("\n РЅРѕРјРµСЂ РєР°РЅР°Р»Р° = %hu\n", c);
+	printf("РЅРѕРјРµСЂ СѓСЃС‚СЂРѕР№СЃС‚РІР° РІ РєР°РЅР°Р»Рµ = %hu\n", f);
+	printf("РєРѕРґ СЃРѕСЃС‚РѕСЏРЅРёСЏ = %hu\n", b);
+	printf("РїСЂРёР·РЅР°Рє Р·Р°РЅСЏС‚РѕСЃС‚Рё СѓСЃС‚СЂРѕР№СЃС‚РІР° = %hu\n", n);
 	return 0;
 }
