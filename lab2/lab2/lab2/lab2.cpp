@@ -5,8 +5,7 @@ using namespace std;
 
 int main()
 {
-	SetConsoleCP(1251);
-	SetConsoleOutputCP(1251);
+	
 	setlocale(LC_ALL, "Russian");
 
 	char name1[11] = "Баландин", name2[11] = "Шишков", name3[11] = "Кравченко";
@@ -49,5 +48,5 @@ int main()
 	printf("|             , Ш - \"Шахтер\"                    |\n");
 	printf("-------------------------------------------------\n");
 
-	return 0;
+	
 }
