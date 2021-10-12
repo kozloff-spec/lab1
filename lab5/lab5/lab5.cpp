@@ -1,18 +1,18 @@
-#include <iostream>
+ï»¿#include <iostream>
 
 void success() {
-    printf_s("òî÷êà ïîïàëà â ïëîùàäü");
+    printf_s("Ñ‚Ð¾Ñ‡ÐºÐ° Ð¿Ð¾Ð¿Ð°Ð»Ð° Ð² Ð¿Ð»Ð¾Ñ‰Ð°Ð´ÑŒ");
 }
 
 void error() {
-    printf_s("òî÷êà íå ïîïàëà â ïëîùàäü");
+    printf_s("Ñ‚Ð¾Ñ‡ÐºÐ° Ð½Ðµ Ð¿Ð¾Ð¿Ð°Ð»Ð° Ð² Ð¿Ð»Ð¾Ñ‰Ð°Ð´ÑŒ");
 }
 
 int main()
 {
     setlocale(LC_ALL, "Russian");
     float x = 2, y = 3;
-    printf_s("Ââåäèòå x,y");
+    printf_s("Ð’Ð²ÐµÐ´Ð¸Ñ‚Ðµ x,y");
     scanf_s("%f %f", &x,&y);
     if (x >= 0) {
         if ((x * x) + (y * y) <= 1) {
