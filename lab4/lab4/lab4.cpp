@@ -6,12 +6,11 @@ int main() {
 	SetConsoleCP(1251);
 	SetConsoleOutputCP(1251);
 
-	char c;
-	char four = 4;
-	char f;
-	char b;
-	char n;
-	unsigned short int UnitStateWord; 
+	unsigned short c;
+	unsigned short f;
+	unsigned short b;
+	unsigned short n;
+	unsigned int rez;
 								
 	printf("Введите код состояния (0 - 4) >");
 	scanf_s("%hu", &c);
@@ -22,12 +21,12 @@ int main() {
 	printf("Введите количество переданных байт (0 - 1) >");
 	scanf_s("%hu", &n);
 
-	UnitStateWord = (c & 0xf) << 13;
-	UnitStateWord |= (f & 0x1f) << 8;
-	UnitStateWord |= (b & 0x7f) << 2;
-	UnitStateWord |= n & 1;
+	rez = (c & 0xF) << 13;
+	rez |= (f & 0x1F) << 8;
+	rez |= (b & 0x7F) << 2;
+	rez |= n & 1;
 
 
-	printf("\nС1лово состояния устройства = %04x\n",		UnitStateWord);
+	printf("\n Слово состояния устройства = %04i\n", rez);
 	return 0;
 }

@@ -11,17 +11,17 @@ int main(void) {
 	unsigned short f; 
 	unsigned short b; 
 	unsigned short n; 
-	unsigned  int UnitStateWord; 
+	unsigned short int rez;
 								
 	printf("Введите кодировку \n");
 	printf("(16-ричное число от 0 до 0xFFFF) >");
-	scanf_s("%hx", &UnitStateWord);
+	scanf_s("%hx", &rez);
 
 
-	c = (UnitStateWord >> 13) & 0xf;
-	f = (UnitStateWord >> 8) & 0x1f;
-	b = (UnitStateWord >> 2) & 0x7f;
-	n = UnitStateWord & 1;
+	c = (rez >> 13) & 0xF;
+	f = (rez >> 8) & 0x1F;
+	b = (rez >> 2) & 0x7F;
+	n = rez & 1;
 
 
 
