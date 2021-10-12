@@ -1,4 +1,4 @@
-#define  _CRT_SECURE_NO_WARNINGS
+п»ї#define  _CRT_SECURE_NO_WARNINGS
 #include <iostream>
 #include "windows.h"
 #include "math.h"
@@ -12,13 +12,13 @@ int main(void) {
 	double a = 12.5, b = 1.3; 
 	double t1,t2;     
 
-	printf("Введите x, y >");
+	printf("Р’РІРµРґРёС‚Рµ x, y >");
 	scanf("%lf %lf", &x, &y);
 
 	double yx = y / x;
 
 	if (x == 0 || y == 0) {
-		printf("x не должен раняться 0 \n");
+		printf("x РЅРµ РґРѕР»Р¶РµРЅ СЂР°РЅСЏС‚СЊСЃСЏ 0 \n");
 		main();
 	}
 	else {

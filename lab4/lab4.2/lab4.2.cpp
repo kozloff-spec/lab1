@@ -15,12 +15,12 @@ int main(void) {
 								
 	printf("¬ведите кодировку \n");
 	printf("(16-ричное число от 0 до 0xFFFF) >");
-	scanf_s("%hd", &UnitStateWord);
+	scanf_s("%hx", &UnitStateWord);
 
 
-	c = (UnitStateWord >> 11) & 0x4;
-	f = (UnitStateWord >> 9) & 0x1f;
-	b = (UnitStateWord >> 8) & 0x7f;
+	c = (UnitStateWord >> 13) & 0xf;
+	f = (UnitStateWord >> 8) & 0x1f;
+	b = (UnitStateWord >> 2) & 0x7f;
 	n = UnitStateWord & 1;
 
 
