@@ -16,19 +16,28 @@ int main(void) {
     double  k2;
     double  k1;
 
-    for (; n <= 9; n++) {
+    while(true) {
+        n++;  
         dbln = n;
         k3 = pow(2, dbln + 1);     // = 2n^(n + 1)
         k2 = pow(2, 2 * dbln) + 1;   // = (2^(2n)) + 1
         k1 = pow(-1, dbln);       //(-1)^n
         term = k1 * k3 / k2;
-        if (fabs(term) <= eps)
-            break;
         sum += term;
 
+        //printf("%ld \n ", n);
 
-        printf("%10.7lf\n", sum);
+        if (n == 9)
+            printf("Сумма 10 членов ряда = %10.7lf\n", sum);
+
+        if (fabs(term) <= eps)
+            break;
+
+        
+
+       
     }
-    printf("lul");
+    printf("Полная сумма ряда = %10.7lf\n", sum);
+    return 0;
 
 }

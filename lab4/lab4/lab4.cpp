@@ -8,9 +8,10 @@ int main() {
 	setlocale(LC_ALL,"Russian");
 
 	unsigned short c;
-	unsigned short f;
+	unsigned short f; 
 	unsigned short b;
 	unsigned short n;
+	unsigned char four = 4;
 	unsigned int rez;
 								
 	printf("Введите код состояния (0 - 4) >");
@@ -23,12 +24,11 @@ int main() {
 	scanf_s("%hu", &n);
 
 	//rez = (c & 0x04) << 13;
-	rez = (c & 0xf) << 13;
+	rez = (c & 4) << 13;
 	rez |= (f & 0x1F) << 8;
 	rez |= (b & 0x7F) << 2;
 	rez |= n & 1;
-
-
+	
 	printf("\n Слово состояния устройства = %04u\n", rez);
 	return 0;
 }

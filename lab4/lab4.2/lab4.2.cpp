@@ -19,7 +19,7 @@ int main(void) {
 	scanf_s("%u", &rez);
 
 
-	c = (rez >> 13) & 0xF;
+	c = (rez >> 13) & 4;
 	f = (rez >> 8) & 0x1F;
 	b = (rez >> 2) & 0x7F;
 	n = rez & 1;
