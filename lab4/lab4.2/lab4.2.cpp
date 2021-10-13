@@ -4,18 +4,19 @@
 using namespace std;
 
 int main(void) {
-	SetConsoleCP(1251);
-	SetConsoleOutputCP(1251);
+	/*SetConsoleCP(1251);
+	SetConsoleOutputCP(1251);*/
+	setlocale(LC_ALL, "Russian");
 
 	unsigned short c; 
 	unsigned short f; 
 	unsigned short b; 
 	unsigned short n; 
-	unsigned short int rez;
+	unsigned int rez;
 								
 	printf("Введите кодировку \n");
 	printf("(16-ричное число от 0 до 0xFFFF) >");
-	scanf_s("%hx", &rez);
+	scanf_s("%u", &rez);
 
 
 	c = (rez >> 13) & 0xF;

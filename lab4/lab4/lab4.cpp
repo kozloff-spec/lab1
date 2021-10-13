@@ -3,8 +3,9 @@
 using namespace std;
 
 int main() {
-	SetConsoleCP(1251);
-	SetConsoleOutputCP(1251);
+	/*SetConsoleCP(1251);
+	SetConsoleOutputCP(1251);*/
+	setlocale(LC_ALL,"Russian");
 
 	unsigned short c;
 	unsigned short f;
@@ -21,12 +22,13 @@ int main() {
 	printf("Введите количество переданных байт (0 - 1) >");
 	scanf_s("%hu", &n);
 
-	rez = (c & 0xF) << 13;
+	//rez = (c & 0x04) << 13;
+	rez = (c & 0xf) << 13;
 	rez |= (f & 0x1F) << 8;
 	rez |= (b & 0x7F) << 2;
 	rez |= n & 1;
 
 
-	printf("\n Слово состояния устройства = %04i\n", rez);
+	printf("\n Слово состояния устройства = %04u\n", rez);
 	return 0;
 }
