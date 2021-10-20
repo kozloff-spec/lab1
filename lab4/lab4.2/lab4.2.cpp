@@ -16,10 +16,10 @@ int main(void) {
 								
 	printf("Введите кодировку \n");
 	printf("(16-ричное число от 0 до 0xFFFF) >");
-	scanf_s("%u", &rez);
+	scanf_s("%x", &rez);
 
 
-	c = (rez >> 13) & 4;
+	c = (rez >> 13) & 7;
 	f = (rez >> 8) & 0x1F;
 	b = (rez >> 2) & 0x7F;
 	n = rez & 1;

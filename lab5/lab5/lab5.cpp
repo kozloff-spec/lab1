@@ -11,22 +11,24 @@ void error() {
 int main()
 {
     setlocale(LC_ALL, "Russian");
-    float x = 2, y = 3;
-    printf_s("Введите x,y");
-    scanf_s("%f %f", &x,&y);
-    if (x >= 0) {
-        if ((x * x) + (y * y) <= 1) {
-            success();
+    float x = 2, y = 3; while (true) {
+
+        printf_s("\nВведите x,y\n");
+        scanf_s("%f %f", &x, &y);
+        if (x >= 0) {
+            if ((x * x) + (y * y) <= 1) {
+                success();
+            }
+            else
+                error();
         }
-        else
-            error();
-    }
-    else {
-        if (x <= 1 && y <= 1) {
-            success();
+        else {
+            if (x <= 1 && y <= 1) {
+                success();
+            }
+            else
+                error();
         }
-        else
-            error();
     }
 
 

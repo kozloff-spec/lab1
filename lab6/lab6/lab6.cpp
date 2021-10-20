@@ -4,14 +4,15 @@
 
 int main(void) {
 
-    SetConsoleCP(1251);
-    SetConsoleOutputCP(1251);
+    /*SetConsoleCP(1251);
+    SetConsoleOutputCP(1251);*/
+    setlocale(LC_ALL, "Russian");
 
-    long n = 0;              /* параметр ряда */
-    double dbln;         /* параметр ряда в форме с плавающей точкой */
-    double sum = 0;        /* сумма членов ряда */
-    double term;         /* значение текущего члена */
-    const double eps = 0.000001;  /* предел точности */
+    long n = 0;              
+    double dbln;         
+    double sum = 0;        
+    double term;        
+    const double eps = 0.000001;  
     double  k3;
     double  k2;
     double  k1;
