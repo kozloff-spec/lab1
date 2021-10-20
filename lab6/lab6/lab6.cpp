@@ -17,8 +17,10 @@ int main(void) {
     double  k2;
     double  k1;
 
-    while(true) {
-        n++;  
+    for(n = 0;;n ++)
+    {
+
+   
         dbln = n;
         k3 = pow(2, dbln + 1);     // = 2n^(n + 1)
         k2 = pow(2, 2 * dbln) + 1;   // = (2^(2n)) + 1
@@ -34,8 +36,7 @@ int main(void) {
         if (fabs(term) <= eps)
             break;
 
-        
-
+     
        
     }
     printf("Полная сумма ряда = %10.7lf\n", sum);
