@@ -14,7 +14,7 @@ int main() {
 	unsigned char four = 4;
 	unsigned int rez;
 								
-	printf("Введите код состояния (0 - 4) >");
+	printf("Введите код состояния (0 - 7) >");
 	scanf_s("%hu", &c);
 	printf("Введите признак ошибки (0 / 31) >");
 	scanf_s("%hu", &f);
@@ -24,11 +24,11 @@ int main() {
 	scanf_s("%hu", &n);
 
 	//rez = (c & 0x04) << 13;
-	rez = (c & 4) << 13;
-	rez |= (f & 0x1F) << 8;
-	rez |= (b & 0x7F) << 2;
+	rez = (c & 7) << 13;
+	rez |= (f & 31) << 8;
+	rez |= (b & 127) << 2;
 	rez |= n & 1;
 	
-	printf("\n Слово состояния устройства = %04u\n", rez);
+	printf("\n Слово состояния устройства = %04x\n", rez);
 	return 0;
 }
