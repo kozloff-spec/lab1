@@ -1,4 +1,4 @@
-#define  _CRT_SECURE_NO_WARNINGS
+п»ї#define  _CRT_SECURE_NO_WARNINGS
 #include <iostream>
 #include "windows.h";
 using namespace std;
@@ -8,18 +8,18 @@ int main()
     float a, b, c;
     setlocale(LC_ALL, "Russian");
 
-    printf("\nвведите а - ");
+    printf("\nРІРІРµРґРёС‚Рµ Р° - ");
     scanf("%f", &a);
 
-    printf("\nвведите b - ");
+    printf("\nРІРІРµРґРёС‚Рµ b - ");
     scanf("%f", &b);
 
-    printf("\nвведите c - ");
+    printf("\nРІРІРµРґРёС‚Рµ c - ");
     scanf("%f", &c);
 
     float D = (b * b) - (4*a*c) ;
     if (D < 0) {
-        printf("\nизвните у данного уравнения нету дискриминанта - ");
+        printf("\nРёР·РІРЅРёС‚Рµ Сѓ РґР°РЅРЅРѕРіРѕ СѓСЂР°РІРЅРµРЅРёСЏ РЅРµС‚Сѓ РґРёСЃРєСЂРёРјРёРЅР°РЅС‚Р° - ");
     }
     else if (D == 0) {
         float x1 = (-b) / (2 * a);

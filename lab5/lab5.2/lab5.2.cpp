@@ -1,4 +1,4 @@
-#define  _CRT_SECURE_NO_WARNINGS
+п»ї#define  _CRT_SECURE_NO_WARNINGS
 #include <iostream>
 #include "windows.h";
 using namespace std;
@@ -7,12 +7,12 @@ void switcher(int mushroom) {
     switch (mushroom % 10)
     {
     case 1:
-        printf("у меня %d гриб", mushroom);
+        printf("Сѓ РјРµРЅСЏ %d РіСЂРёР±", mushroom);
         break;
     case 2:
     case 3:
     case 4:
-        printf("у меня %d грибА", mushroom);
+        printf("Сѓ РјРµРЅСЏ %d РіСЂРёР±Рђ", mushroom);
         break;
     case 5:
     case 6:
@@ -20,7 +20,7 @@ void switcher(int mushroom) {
     case 8:
     case 9: 
     case 0:
-        printf("у меня %d грибОВ", mushroom);
+        printf("Сѓ РјРµРЅСЏ %d РіСЂРёР±РћР’", mushroom);
         break;
     default:
         break;
@@ -32,7 +32,7 @@ int main()
     setlocale(LC_ALL, "Russian");
     int mushroom;
     while (true) {
-        printf("\nсколько у вас грибов? ");
+        printf("\nСЃРєРѕР»СЊРєРѕ Сѓ РІР°СЃ РіСЂРёР±РѕРІ? ");
         scanf("%d", &mushroom);
 
 
@@ -42,7 +42,7 @@ int main()
                 case 12: 
                 case 13:
                 case 14:
-                    printf("у меня %d грибОВ", mushroom);
+                    printf("Сѓ РјРµРЅСЏ %d РіСЂРёР±РћР’", mushroom);
                     break;
                 default:
                     switcher(mushroom);
