@@ -21,7 +21,7 @@ int main(void) {
 
 	c = (rez >> 13) & 7;
 	f = (rez >> 8) & 0x1F;
-	b = (rez >> 2) & 0x7F;
+	b = (rez >> 2) & 63;
 	n = rez & 1;
 
 

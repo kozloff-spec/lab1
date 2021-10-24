@@ -1,45 +1,39 @@
-﻿#define  _CRT_SECURE_NO_WARNINGS
-#include <iostream>
-#include "windows.h"
+﻿#include <iostream>
+using namespace std;
 
-int main(void) {
+int main()
+{
+    long n;
+    double dbln;
+    double  sum = 0;
+    double term;
+    const double lim = 0.0000000001;
+    double  k1 = 1;
+    //long k3 = 1, k2 = 1;
 
-    /*SetConsoleCP(1251);
-    SetConsoleOutputCP(1251);*/
-    setlocale(LC_ALL, "Russian");
-
-    long n = 0;              
-    double dbln;         
-    double sum = 0;        
-    double term;        
-    const double eps = 0.000001;  
-    double  k3;
-    double  k2;
-    double  k1;
-
-    for(n = 0;;n ++)
+    for (; ; n++) 
     {
-
-   
+        k1 = pow(-1, n);
         dbln = n;
-        k3 = pow(2, dbln + 1);     // = 2n^(n + 1)
-        k2 = pow(2, 2 * dbln) + 1;   // = (2^(2n)) + 1
-        k1 = pow(-1, dbln);       //(-1)^n
-        term = k1 * k3 / k2;
-        sum += term;
-
-        //printf("%ld \n ", n);
-
-        if (n == 9)
-            printf("Сумма 10 членов ряда = %10.7lf\n", sum);
-
-        if (fabs(term) <= eps)
+        term = k1 * (n*n + 1) / (n*n* n + 3);
+        if (fabs(term) >= lim)
+        {
+            sum += term;
+        }
+        else
+        {
             break;
-
-     
-       
+        }
+        if (n == 9)
+        {
+            printf("Сумма 10 членов ряда = %10.7lf\n", sum);  // -2,64166
+        }
     }
     printf("Полная сумма ряда = %10.7lf\n", sum);
-    return 0;
 
+    printf("%ld", n);
+
+
+
+    return 0;
 }
