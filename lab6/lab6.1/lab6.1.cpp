@@ -1,44 +1,44 @@
-#include <iostream>
-#include <time.h>   // для рандома
+п»ї#include <iostream>
+#include <time.h>   // РґР»СЏ СЂР°РЅРґРѕРјР°
 
 int main()
 {
 	setlocale(LC_ALL, "Russian");
 	int n = 4;
 	int num;
-	srand(time(0)); // для рандома
+	srand(time(0)); // РґР»СЏ СЂР°РЅРґРѕРјР°
 
 	
 	int random;
 	
 
 	while (true) {
-		printf("\nНовая Игра!\n");
+		printf("\nРќРѕРІР°СЏ РРіСЂР°!\n");
 		random = rand() % 100;
 		printf("%d \n", random);
 		for (int nn = n; nn > 0; nn--) {
 
-			printf("введите число - ");
+			printf("РІРІРµРґРёС‚Рµ С‡РёСЃР»Рѕ - ");
 			scanf_s("%d", &num);
 
 			if (num > 100 || num < 0) {
-				printf("Введите коректное значение! ");
+				printf("Р’РІРµРґРёС‚Рµ РєРѕСЂРµРєС‚РЅРѕРµ Р·РЅР°С‡РµРЅРёРµ! ");
 				nn++;
-				printf(" ещё %d попыток \n", nn);
+				printf(" РµС‰С‘ %d РїРѕРїС‹С‚РѕРє \n", nn);
 				continue;
 			}
 
 			if (num == random) {
-				printf("Вы угадали!");
+				printf("Р’С‹ СѓРіР°РґР°Р»Рё!");
 				break;
 			}
 			else if (num < random) {
-				printf("ваше число меньше заданного.");
+				printf("РІР°С€Рµ С‡РёСЃР»Рѕ РјРµРЅСЊС€Рµ Р·Р°РґР°РЅРЅРѕРіРѕ.");
 			}
 			else {
-				printf("ваше число больше заданного.");
+				printf("РІР°С€Рµ С‡РёСЃР»Рѕ Р±РѕР»СЊС€Рµ Р·Р°РґР°РЅРЅРѕРіРѕ.");
 			}
-			printf(" ещё %d попыток \n", nn);
+			printf(" РµС‰С‘ %d РїРѕРїС‹С‚РѕРє \n", nn);
 		}
 	}
 

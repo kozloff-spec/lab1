@@ -1,10 +1,10 @@
-#include <iostream>
+п»ї#include <iostream>
 #include <time.h>   // time
 
 int main()
 {
     setlocale(LC_ALL, "Russian");
-    srand(time(0)); // для рандома
+    srand(time(0)); // РґР»СЏ СЂР°РЅРґРѕРјР°
     int n;
     int correct = 0;
     int xmax = 9;
@@ -18,14 +18,14 @@ int main()
         int x = (rand() % xmax) + 1;
         int y = (rand() % ymax) +1;
 
-        printf("Решите пример %d * %d = ", x,y);
+        printf("Р РµС€РёС‚Рµ РїСЂРёРјРµСЂ %d * %d = ", x,y);
         int answ;
         scanf_s("%d", &answ); 
         if (answ == (x * y)) {
             correct++;
         }
     }
-    printf("ваша оценка %d из %d", correct,n);
+    printf("РІР°С€Р° РѕС†РµРЅРєР° %d РёР· %d", correct,n);
 }
 
 
