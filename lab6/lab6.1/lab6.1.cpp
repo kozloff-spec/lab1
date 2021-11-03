@@ -1,4 +1,5 @@
 ﻿#include <iostream>
+#include "windows.h"
 #include <time.h>   // для рандома
 
 int main()
@@ -6,6 +7,7 @@ int main()
 	setlocale(LC_ALL, "Russian");
 	int n = 4;
 	int num;
+	int get;
 	srand(time(0)); // для рандома
 
 	
@@ -40,6 +42,10 @@ int main()
 			}
 			printf(" ещё %d попыток \n", nn);
 		}
+		printf("\n\n\n");
+		
+		
+
 	}
 
 }
