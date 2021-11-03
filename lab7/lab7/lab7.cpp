@@ -7,12 +7,15 @@ int main() {
 
 	setlocale(LC_ALL, "Russian");
 
-	short n;        /* параметр внешнего цикла */
-	double x, y;    /* абсцисса и ордината графика */
-	short h;        /* позиция точки на экране */
+	short n;        
+	double x, y;    
+	short h;        
 	float temp = 0;
 	int line = 0;
-	/* внешний цикл - для 5 периодов */
+	int drawline = 1;
+
+	
+
 	for (n = 0; n < 5; n++) {
 		/* вывод заголовка таблицы */
 		printf("|   x   |      y    |\n");
@@ -23,16 +26,16 @@ int main() {
 			if (x < 2) y = sqrt((4 - (x - 2
 				
 				) * (x - 2)));
-			else if (x == 2) line = 1;
-			/* 2-й отрезок */
+			else if (x == 2 && drawline == 1) line = 1;
+
 			else if (x < 3) y = -sqrt(1 - (x - 3) * (x - 3)) ;
-			else if (x == 3) line = 2;
-			///* 3-й отрезок */
+			else if (x == 3 && drawline == 1) line = 2;
+
 			else y = 0;
-			/* вывод строки таблицы */
+		
 			printf("| %5.2lf | %10.7lf |", x + n * 4, y);
-			/* определение позиции точки */
-			h = (y + 2) * 10;			// Объяснить зачем
+			
+			h = (y + 2) * 10;			
 			//if (y - 1 - h * 10 > 0.5) h++; // Здесь ошибка, исправить
 			/* вывод точки графика */
 			if (line == 0) {
