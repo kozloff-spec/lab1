@@ -4,6 +4,8 @@
 using namespace std;
 
 
+
+
 int main() {
 
 	setlocale(LC_ALL, "Russian");
@@ -14,7 +16,8 @@ int main() {
 	int answer;
 
 	while (true) {
-		cout << "\nВы курите?\n";
+
+		cout << "\nВы курите? 1 - да , 0 - нет\n";
 		cin >> answer;
 		if (answer == 1) {
 			if (arrindex[0] <= 5) {
@@ -48,6 +51,8 @@ int main() {
 		cout << arr[i] << " | ";
 	}
 
+
+	system("PAUSE");
 
 
 

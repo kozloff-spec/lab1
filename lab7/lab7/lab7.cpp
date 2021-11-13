@@ -12,7 +12,7 @@ int main() {
 	short h;        
 	float temp = 0;
 	int line = 0;
-	int drawline = 1;
+	int drawline = ;
 
 	
 
@@ -23,9 +23,7 @@ int main() {
 		/* внутренний цикл для одного периода */
 		for (x = 0; x < 4; x += 0.25) {
 			/* 1-й отрезок */
-			if (x < 2) y = sqrt((4 - (x - 2
-				
-				) * (x - 2)));
+			if (x < 2) y = sqrt((4 - (x - 2) * (x - 2)));
 			else if (x == 2 && drawline == 1) line = 1;
 
 			else if (x < 3) y = -sqrt(1 - (x - 3) * (x - 3)) ;
