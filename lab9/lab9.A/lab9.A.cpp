@@ -66,5 +66,29 @@ int main(void)
 	cout << "\n\n";
 
 
+	for (l = 0; l < S; l++) {
+		max = 0;
+		for (r = 0; r < S; r++) {
+			ArMax[l][r] = Ar[l][r];
+			if (Ar[l][r] < Ar[l][max]) {
+				max = r;
+			}
+		}
+		c = ArMax[l][0];
+		ArMax[l][0] = ArMax[l][max];
+		ArMax[l][max] = c;
+
+	}
+
+
+	for (l = 0; l < S; l++) {
+		for (r = 0; r < S; r++) {
+			printf("%3d", ArMax[l][r]);
+		}
+		printf("\n");
+	}
+	cout << "\n\n";
+
+
 	return 0;
 }

@@ -2,14 +2,14 @@
 #include "windows.h"
 using namespace std;
 
-int Ar[20];  
+int Ar[100];  
 
 int main(void)
 {
 	setlocale(LC_ALL, "Russian");
 	int i;    
 	int count = 0;
-	int cc = 20;
+	int cc = 100;
 
 
 

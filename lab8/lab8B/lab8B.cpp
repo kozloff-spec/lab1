@@ -86,4 +86,3 @@ int main()
 	
 	dele(arr, leng);
 }
-
