@@ -1,74 +1,89 @@
-#include <iostream>
-#include <iostream>
-#include <algorithm> 
-#include <iomanip>
+#include<iostream> 
+#include<ctime>
+#include<cmath>
+#include<iomanip>
+#include <chrono>
+
 using namespace std;
 
 
-void matrix_style(int row_col, int array[100])
+void Shuttle(int arr[], int size)
 {
-    int matrix[100][100];
-    cout << "\n Matrix:" << endl;
-    for (int i = 0; i < row_col; ++i) {
-        for (int j = 0; j < row_col; ++j) {
-            matrix[i][j] = array[(i * row_col + j)];
-            cout << setw(4) << matrix[i][j];
-        }cout << endl;
+    int j, i, temp;
+
+    for (i = 1; i < size; i++) {
+
+        j = i - 1;
+
+        while (j >= 0) {
+
+            if (arr[j] > arr[j + 1]) {
+                temp = arr[j];
+                arr[j] = arr[j + 1];
+                arr[j + 1] = temp;
+                j--;
+            }
+            else break;
+        }
     }
-    //avarage value
-    for (int i = 0; i < row_col; ++i) {
-
-        int avarage_value = 0;
-
-        for (int j = 0; j < row_col; ++j) {
-            avarage_value += matrix[i][j];
-        } avarage_value /= row_col;
-
-        for (int j = 0; j < row_col; ++j) {
-            matrix[i][j] *= avarage_value;
-        } avarage_value = 0;
-    }
-    cout << "New multipled matrix:" << endl;
-    for (int i = 0; i < row_col; ++i) {
-        for (int j = 0; j < row_col; ++j) {
-            cout << setw(4) << matrix[i][j];
-        }cout << endl;
-    }
-
-
-
-    return;
 }
-
 
 
 int main()
 {
     while (true) {
 
-        int array[100];
-        // input size of arry 
-        int size_array;
-        cout << "Input array size multiple of the root size of the array" << endl;
-        cin >> size_array;
+        cout.setf(ios::fixed);
+        cout.precision(15);
 
-        if (sqrt(size_array) - int(sqrt(size_array)) == 0) {
-            // array output
-            cout << "Your array is:" << endl;
+        cout << "Shuttle sort" << endl;
+        int size;
+        cout << "Input array size: ";
+        cin >> size;
 
-            for (int i = 0; i < size_array; ++i) {
-                array[i] = rand() % 10 + 1;
-                cout << setw(3) << array[i];
-            } int row_col = sqrt(size_array);
+        int arr[1000];
 
-            matrix_style(row_col, array);
+        cout << "Unsorted array:" << endl;
+        for (int i = 0; i < size; i++) {
+
+            //arr[i] = rand() % 10 + 1;
+            arr[i] = i;
+            cout << setw(3) << arr[i];
 
         }
-        else cout << "Error" << endl;
 
-        cout << "\n\n\n";
+        double aver_dur = 0;
 
+        double dur_arr[1000];
+
+        for (int i = 0; i < size; i++) {
+
+            auto begin = std::chrono::high_resolution_clock::now();
+
+            Shuttle(arr, size);
+
+            auto end = std::chrono::high_resolution_clock::now();
+            std::chrono::duration<double> duration = end - begin;
+
+            dur_arr[i] = duration.count();
+        }
+
+        for (int i = 0; i < size; i++) {
+
+            if (i > 0) aver_dur += dur_arr[i];
+
+        }
+
+        cout << "\nSorted array:" << endl;
+        for (int i = 0; i < size; i++) {
+
+            cout << setw(3) << arr[i];
+
+        }
+
+        std::cout << "\nThe time:" << aver_dur / (size - 1) << "s\n" << endl;
     }
 
+    //system("pause");
     return 0;
 }

@@ -1,81 +1,152 @@
 ﻿#include <iostream>
-#include <cmath>
+#include <iomanip>
+#include <cstdlib>
+#include <chrono>
 
 
 using namespace std;
+#define N 16
+#define coun 60
+#define MAXINT 32767
 
-int maxi(int i, int j)
-{
-    if (i > j) return(i);
-    else return(j);
-}
+using namespace std;
 
-int mini(int i, int j)
-{
-    if (i < j) return(i);
-    else return (j);
-}
+int* Sort(int A[N], int size) {
 
-int buildtourn(int tourn[], int n)
-{
-    int min1 = 0, a;
-    //Compute tournament structure
-    for (int i = 2 * n - 2; i > 1; i = i - 2)
-    {
-        tourn[i / 2] = maxi(tourn[i], tourn[i + 1]);
-        a = mini(tourn[i], tourn[i + 1]);
-        if (min1 > a) min1 = a;
+    int tree[N * 2];
+    int i;
+
+    int k, j = 0;
+
+    while (j < N) {
+        tree[size + j] = A[j];
+        ++j;
     }
-    return min1;
-}
 
-int getnext(int tourn[], int n, int low)
-{
-    int i = 2;
-    //Part 1 - downward traversal
-    while (i <= 2 * n - 1)
+    j = size;
+    while (j < 2 * size)
     {
-        if (tourn[i] > tourn[i + 1])
+        if (tree[j] >= tree[j + 1])  tree[j / 2] = j;
+        else  tree[j / 2] = j + 1;
+        j += 2;
+    }
+
+    k = size / 2;
+    while (k >= 1)
+    {
+        j = k;
+        while (j < 2 * k)
         {
-            tourn[i] = low;
-            i = 2 * i;
+            if (tree[tree[j]] >= tree[tree[j + 1]])
+                tree[j / 2] = tree[j];
+            else  tree[j / 2] = tree[j + 1];
+            j += 2;
         }
-        else
-        {
-            tourn[i + 1] = low;
-            i = 2 * (i + 1);
-        }
+        k /= 2;
     }
 
-    //Part 2 - upward traversal
-    for (i = i / 2; i > 1; i = i / 2)
+    for (k = N; k >= 2; --k)
     {
-        if (i % 2 == 0) tourn[i / 2] = maxi(tourn[i], tourn[i + 1]); // go to the right of i
-        else tourn[i / 2] = maxi(tourn[i], tourn[i - 1]); // to the left of i
+        i = tree[1];
+        A[k - 1] = tree[i];
+        tree[i] = -MAXINT;
+
+
+        if (i % 2)  tree[i / 2] = i - 1;
+        else  tree[i / 2] = i + 1;
+
+        i /= 2;
+
+        while (i > 1)
+        { //j - ápàò i.
+            if (i % 2)  j = i - 1;
+            else  j = i + 1;
+            if (tree[tree[i]] > tree[tree[j]])  tree[i / 2] = tree[i];
+            else  tree[i / 2] = tree[j];
+            i /= 2;
+        }
     }
-    return 0;
+    A[0] = tree[tree[1]];
+    return A;
 }
+
+
 int main()
 {
-    int tourn[100], n, i, low;
-    //Read
-    cout << "Give n :";
-    cin >> n;
-    cout << "Enter the integers to be sorted : " << endl;
-    for (i = n; i <= 2 * n - 1; i++)
-        cin >> tourn[i];
-
-    //build tournament
-    low = buildtourn(tourn, n) - 1;
-
-    //Sorting
-    cout << " Sorted items are : " << endl;
-    for (i = 1; i <= n; i++)
+    /*int A[N];
+    cout << "Massiv:\n";
+    for (int i = 0; i < N; ++i)
     {
-        cout << tourn[i] << '\t';
-        getnext(tourn, n, low);
+        A[i] = rand() % 100;
+        cout << A[i] << " ";
     }
-    cout << '\n';
+    cout << endl;
 
-    return 0;
+    Sort(A, N);
+    for (int j = 0; j < N; j++) {
+       cout <<  A[j] << " ";
+    }*/
+
+
+    cout.setf(ios::fixed);
+    cout.precision(7);
+
+
+    setlocale(LC_ALL, "Russian");
+    int typesort;
+    cout << "Введите масив для блочной сортировки. 1,2,3";
+    cin >> typesort;
+    int mainArray[N];
+    int array[N]; // массив который нужно отсортировать
+    for (int j = 0; j < N; j++) {
+        if (typesort == 1) {
+            array[j] = j + 1;
+        }
+        else if (typesort == 2) {
+            array[j] = (N - j);
+        }
+        else {
+            array[j] = rand() % 10;
+        }
+        mainArray[j] = array[j];
+
+    }
+    int array1[N][N] = { 0 }; // массив в котором будут заноситься числа
+
+    double count[coun];
+    int countTrigger = 0;
+    for (int i = 0; i < coun; i++) {
+        for (int j = 0; j < N; j++) {
+            array[j] = mainArray[j];
+        }
+
+
+
+
+
+        for (int i = 0; i < N; i++)
+            cout << array[i] << " ";
+        cout << endl << endl;
+
+        auto start = std::chrono::system_clock::now();
+        Sort(array, N);  // вызов функции
+        auto end = std::chrono::system_clock::now();
+
+        cout << endl << endl << "array[] = ";
+        for (int i = 0; i <= N - 1; i++)
+            cout << array[i] << " ";
+        cout << endl << endl;
+
+
+
+
+
+        chrono::duration<float> duration = end - start;
+        cout << endl;
+        cout << "\nThe time: " << duration.count() << "\n";
+        count[countTrigger] = duration.count();
+        countTrigger++;
+
+
+    }
 }

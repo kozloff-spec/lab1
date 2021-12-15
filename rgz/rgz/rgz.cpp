@@ -2,30 +2,78 @@
 #include <iomanip>
 #include <cstdlib>
 #include <chrono>
-#define coun 100
+#define coun 60
+#define size 10
 
 using namespace std;
 
-void bucketSort(int[], int, int[][10]); // прототип функции
+void bucketSort(int[], int, int[][size]); // прототип функции
 
 int main()
 {
-    const int size = 10; // размер массивов
-    int array[size] = { 5,8,19,12,97,3,45,23,77,100 }; // массив который нужно отсортировать
+    cout.setf(ios::fixed);
+    cout.precision(7);
+
+
+    setlocale(LC_ALL, "Russian");
+    int typesort;
+    cout << "Введите масив для блочной сортировки. 1,2,3";
+    cin >> typesort;
+    int mainArray[size];
+    int array[size]; // массив который нужно отсортировать
+    for (int j = 0; j < size ; j++) {
+        if (typesort == 1) {
+            array[j] = j+1;
+        }
+        else if (typesort == 2) {
+            array[j] = (size - j);
+        }
+        else {
+            array[j] = rand() % 10;
+        }
+        mainArray[j] = array[j];
+       
+    }
     int array1[size][size] = { 0 }; // массив в котором будут заноситься числа
-    int man;
+
     double count[coun];
     int countTrigger = 0;
     for (int i = 0; i < coun;i++) {
+        for (int j = 0; j < size; j++) {
+            array[j] = mainArray[j];
+        }
+
+
+
+        
+
+        for (int i = 0; i < size; i++)
+            cout << array[i] << " ";
+        cout << endl << endl;
 
         auto start = std::chrono::system_clock::now();
         bucketSort(array, size, array1); // вызов функции
         auto end = std::chrono::system_clock::now();
+
+        cout << endl << endl << "array[] = ";
+        for (int i = 0; i <= size-1; i++)
+            cout << array[i] << " ";
+        cout << endl << endl;
+        // обнуляем блочный массив
+        for (int i = 0; i < size; i++)
+            for (int j = 0; j < size; j++)
+                array1[i][j] = 0;
+
+
+
+
         chrono::duration<float> duration = end - start;
         cout << endl;
         cout << "\nThe time: " << duration.count() << "\n";
         count[countTrigger] = duration.count();
         countTrigger++;
+
+       
     }
 
     for (int i = 0; i < coun; i++) {
@@ -49,11 +97,11 @@ int main()
         cout << "\nThe time2: " << count[i] << "\n";
     }
     double finalCount = 0;
-    for ( int i = ((coun) / 100) * 20; i < (coun - ((coun) / 100) * 20); i++) {
+    for ( int i = ((coun) * 20) /100; i < (coun - ((coun) * 20) /100); i++) {
         finalCount += count[i];
     }
-    double sixteen = ((coun) / 100) * 60;
-    cout << "The final result: " << ( finalCount/ sixteen)<<endl;
+    double sixteen = ((coun) * 60) /100;
+    cout << "The final result: " << ( finalCount/sixteen)<<endl;
 
 
 
@@ -63,10 +111,8 @@ int main()
     return 0;
 }
 
-void bucketSort(int ar[], int x, int ar1[][10]) // передаем функции оба массива
+void bucketSort(int ar[], int x, int ar1[][size]) // передаем функции оба массива
 {
-    // t - индекс элемента,куда переносить с блочного массива
-    // обратно в 1ый массив
     int t = 0;
     // d - разряды чисел.
     int d = 1;
@@ -94,12 +140,12 @@ void bucketSort(int ar[], int x, int ar1[][10]) // передаем функци
                 }
         }
         // для наглядности - печать 2го блочного массива и 1го массива
-
-       
-        cout << endl << endl << "array[10] = ";
-        for (int i = 0; i < x; i++)
-            cout << ar[i] << " ";
-        cout << endl << endl;
+      /*  cout << setw(3) << "    0 " << "   1 " << "   2 "
+            << "   3 " << "   4 "
+            << "   5 " << "   6 "
+            << "   7 " << "   8 "
+            << "   9 " << endl << endl;*/    
+        
         // обнуляем блочный массив
         for (int i = 0; i < x; i++)
             for (int j = 0; j < x; j++)
@@ -107,4 +153,5 @@ void bucketSort(int ar[], int x, int ar1[][10]) // передаем функци
         // в конце каждого цикла умножаем d на 10 для следующего разряда
         d *= 10;
     }
+    
 }
