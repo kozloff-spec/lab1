@@ -3,7 +3,7 @@
 #include <cstdlib>
 #include <chrono>
 #define coun 60
-#define size 10
+#define size 45
 
 using namespace std;
 

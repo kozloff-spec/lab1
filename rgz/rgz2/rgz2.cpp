@@ -5,7 +5,7 @@
 
 
 using namespace std;
-#define N 16
+#define N 45
 #define coun 60
 #define MAXINT 32767
 
@@ -149,4 +149,25 @@ int main()
 
 
     }
+    double temp;
+    for (int i = 0; i < coun - 1; i++) {
+        for (int j = 0; j < coun - i - 1; j++) {
+            if (count[j] > count[j + 1]) {
+                // меняем элементы местами
+                temp = count[j];
+                count[j] = count[j + 1];
+                count[j + 1] = temp;
+            }
+        }
+    }
+    for (int i = 0; i < coun; i++) {
+        cout << "\nThe time2: " << count[i] << "\n";
+    }
+    double finalCount = 0;
+    for (int i = ((coun) * 20) / 100; i < (coun - ((coun) * 20) / 100); i++) {
+        finalCount += count[i];
+    }
+    double sixteen = ((coun) * 60) / 100;
+    cout << "The final result: " << (finalCount / sixteen) << endl;
+
 }
