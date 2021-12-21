@@ -59,7 +59,6 @@ int main(void) {
 	}
 	cout << endl <<  endl;
 
-
 	mod(arr);
 	cout << endl;
 	for (int i = 0; i < M; i++)
