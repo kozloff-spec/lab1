@@ -49,7 +49,7 @@ void mod(int arr[M]) {
 }
 
 int main(void) {
-	//srand(time(0));
+	srand(time(0));
 	setlocale(LC_ALL, "Russian");
 	int arr[M];
 	for (int i = 0; i < M; i++)
