@@ -1,126 +1,140 @@
-/*
-Приклад 8
-Створити структуру "Відомість здачі сесії":
-- ПІБ студента
-- оцінки студента з 5 дисциплін
-Кількість студентів дорівнює 20-ти
-Написати функції, які:
-1) Обчислюють максимальний середній бал
-2) Знаходять кращого за середнім балом студента.
-*/
-#include <iostream>	// std::cout
-#include <string>	// std::string, std::to_string
-#include <Windows.h>
+п»ї#define  _CRT_SECURE_NO_WARNINGS
+#include <iostream>
+#include <string>
+#include "windows.h";
+
 using namespace std;
-#define N 20		// Кількість студентів
-#define M 5			// Кількість дисциплін в сесії
 
-struct Student
-{
-	string name;		// Ім'я студента
-	int marks[M];		// Масив оцінок за сесію
-	float averageMark;	// Середній бал з оцінок
-};
+#define amount_of_elements 3
 
-// Функція заповнення відомості (Roll)
-void inputRoll(Student roll[])
-{
-	// Очищення імен
-	for (int i = 0; i < N; i++) roll[i].name = "";
-	for (int i = 0; i < N; i++)
-	{
-		// Створення унікального імені
-		bool no_unique = true;
-		do {
-			roll[i].name = "StName"
-				+ to_string(rand() % N + 1);
-			for (int j = 0; j < N; j++)
-			{
-				if (i != j &&
-					roll[i].name == roll[j].name) {
-					no_unique = true;
-					break;
-				}
-				else no_unique = false;
-			}
-		} while (no_unique);
+struct Details {
 
-		// Створення оцінок і середнього бала
-		roll[i].averageMark = 0;
-		for (int j = 0; j < M; j++)
-		{
-			// 3, 4, 5
-			roll[i].marks[j] = rand() % 3 + 3;
-			// Підсумовування всіх балів
-			roll[i].averageMark += roll[i].marks[j];
-		}
-		// Розрахунок середнього бала
-		roll[i].averageMark /= M;
-	}
 
-	// Друк відомості
-	printf_s("|------------------------------------|\n");
-	printf_s("| N |   ПІБ    |  Оцінки   | Сер.бал |\n");
-	printf_s("|------------------------------------|\n");
-	for (int i = 0; i < N; i++)
-	{
-		printf_s("|%3d| %-9s|", i, roll[i].name.c_str());
-		for (int j = 0; j < M; j++)
-		{
-			printf_s("%2d", roll[i].marks[j]);
-		}
-		printf_s(" | %7.1f |\n", roll[i].averageMark);
-	}
-	printf_s("|------------------------------------|\n");
+    string name;
+    char type;
+    int count;
+    float weight;
+
+
+}det[4];
+
+void in_put(Details det[]) {
+
+
+    for (int i = 0; i < amount_of_elements; ++i) {
+
+
+        cin >> det[i].name >> det[i].type >> det[i].count >> det[i].weight;
+
+    }
+
 }
 
-// 1 Функція знаходження максимального середнього бала
-float maxAverageMark(Student roll[])
-{
-	float max = 0.;
-	for (int i = 0; i < N; i++)
-	{
-		if (roll[i].averageMark > max)
-			max = roll[i].averageMark;
-	}
-	return max;
+void random(Details det[]) {
+
+
+    char letters[3] = { 'РЎ', 'РЁ' ,'Р”' };
+    static string name_rand[] = { "Р¤Р»Р°РЅРµС†", "РџРµСЂРµС…РѕРґРЅРёРє", "РЎС‚Р°РЅРёРЅР°" };
+    for (int i = 0; i < amount_of_elements; i++) {
+        if (i == 0) {
+            det[i].name = "Р‘Р°Р»Р°РЅРґРёРЅ";
+        }
+        else if (i == 1) {
+            det[i].name = "РЁРёС€РєРѕРІ";
+        }
+        else if (i == 2) {
+            det[i].name = "РљСЂР°РІС‡РµРЅРєРѕ";
+        }
+        //det[i].name = name_rand[rand() % 3];
+        det[i].weight = rand() + 10.0;
+        det[i].type = letters[rand() % 3];
+        det[i].count = rand() + 1;
+
+    }
 }
 
-// 2 Функція знаходження кращого студента
-string leader(Student roll[], float maxAverMark)
-{
-	for (int i = 0; i < N; i++)
-	{
-		if (roll[i].averageMark == maxAverMark)
-			return roll[i].name;
-	}
+void sort(Details det[]) {
+
+
+    if (det[0].count > det[1].count) {
+        swap(det[0], det[1]);
+
+    }
+
+    if (det[0].count > det[2].count) {
+        swap(det[0], det[2]);
+
+    }
+
+    if (det[1].count > det[2].count) {
+        swap(det[1], det[2]);
+
+    }
+
 }
 
-int main()
-{
-	SetConsoleCP(1251);
-	SetConsoleOutputCP(1251);
-	// Оголошення масиву студентів
-	Student roll[N];
+void print(Details det[]) {
+    /* Р’С‹РІРѕРґ С‚Р°Р±Р»РёС†С‹ */
+    printf("-------------------------------------------------\n");
+    printf("|   		Р’РµРґРѕРјРѕСЃС‚СЊ РґРµС‚Р°Р»РµР№               |\n");
+    printf("|-----------------------------------------------|\n");
+    printf("|   Р¤Р°РјРёР»РёСЏ  |  РљРѕРґ  |РљРѕР»РёС‡РµСЃС‚РІРѕ  |РњРµСЃС‚Рѕ РІ РС‚РѕРіРµ|\n");
+    printf("|  СѓС‡Р°СЃС‚РЅРёРєР° |РљРѕРјР°РЅРґС‹|Р±Р°Р»РѕРІ       |             |\n");
+    printf("|------------|-------|------------|-------------|\n");
+    /* РІС‹РІРѕРґ СЃС‚СЂРѕРє С„Р°РєС‚РёС‡РµСЃРєРёС… РґР°РЅРЅС‹С… */
+    for (int i = 0; i < amount_of_elements; i++) {
+        cout << "|";
+        cout.width(12);
+        cout << det[i].name;
+        printf("|   %c   |  %-9.1d | %11lg |\n",
+            det[i].type, det[i].count, det[i].weight);
+    }
+    printf("------------------------------------------------\n");
+    printf("| РџСЂРёРјРµС‡Р°РЅРёРµ: Р” - Р”РёРЅР°РјРѕ, РЎ - РЎРїР°СЂС‚Р°Рє,          | \n");
+    printf("|   РЁ -  РЁР°С…С‚РµСЂ                                 | \n");
+    printf("------------------------------------------------\n");
 
-	while (true)
-	{
-		// Створення масиву студентів, 
-		//створення відомості
-		inputRoll(roll);
 
-		// 1 Пошук максимального середнього бала
-		float maxAverMark = maxAverageMark(roll);
-		cout << "Максимальний середній бал = ";
-		cout << maxAverMark << "\n";
 
-		// 2 Знаходження кращого студента 
-		//по максимальному сер. балу
-		cout << "Кращий студент : ";
-		cout << leader(roll, maxAverMark) << "\n";
 
-		system("pause");
-		system("cls");
-	}
-	return 0;
 }
+
+int main() {
+
+    srand(time(NULL));
+    SetConsoleCP(1251);
+    SetConsoleOutputCP(1251);
+
+
+    int action = 0;
+    while (true) {
+
+        for (int i = 0; i < 1; i++) {
+
+            cout << "1 вЂ“ СЃР»СѓС‡Р°Р№РЅС‹Рј, 2 - РІРІРѕРґ СЃ СЌРєСЂР°РЅ, 3 вЂ“ СЃРѕСЂС‚РёСЂРѕРІРєР°, 4 вЂ“ РїРµС‡Р°С‚СЊ, 5 - Р·Р°РІРµСЂС€РёС‚СЊ СЂРѕР±РѕС‚Сѓ ";
+            cin >> action;
+
+            if (action == 1) {
+                random(det);
+            }
+            else if (action == 2) {
+                in_put(det);
+            }
+            else if (action == 3) {
+                sort(det);
+            }
+            else if (action == 4) {
+                print(det);
+            }
+            else if (action == 5) {
+                exit(0);
+            }
+        }
+
+    }
+
+
+
+    return 0;
+}
+
